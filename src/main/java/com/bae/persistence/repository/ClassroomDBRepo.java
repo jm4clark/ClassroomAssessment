@@ -8,7 +8,6 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
-import javax.transaction.Transactional.TxType;
 
 import com.bae.persistence.domain.Classroom;
 import com.bae.util.JSONUtil;
@@ -42,7 +41,7 @@ public class ClassroomDBRepo implements ClassroomRepository {
 	}
 
 	@Override
-	@Transactional(TxType.REQUIRED)
+	@Transactional(REQUIRED)
 	public String updateClassroom(int id, String classroom) {
 		Classroom newcr = util.getObjectForJSON(classroom, Classroom.class);
 		Classroom oldcr = util.getObjectForJSON(getAClassroom(id),Classroom.class);
@@ -59,7 +58,7 @@ public class ClassroomDBRepo implements ClassroomRepository {
 	}
 
 	@Override
-	@Transactional(TxType.REQUIRED)
+	@Transactional(REQUIRED)
 	public String deleteClassroom(int id) {
 		if(manager.find(Classroom.class, id) != null) {
 			manager.remove(id);
