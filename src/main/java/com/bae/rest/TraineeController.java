@@ -19,4 +19,11 @@ public class TraineeController {
 	public String getAllTrainees() {
 		return traineeService.getAllTrainees();
 	}
+	
+	@POST
+	@Path("createTrainee")
+	@Produces({ "application/json" })
+	public String createTrainee(String trainee) {
+		return traineeService.createTrainee(trainee);
+	}
 }
